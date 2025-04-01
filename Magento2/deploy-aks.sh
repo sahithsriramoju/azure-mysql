@@ -133,6 +133,9 @@ sudo az login --service-principal --username "$SERVICE_PRINCIPAL_APP_ID" --passw
 
 # Set the Azure subscription
 echo "Setting the Azure subscription..."
+sudo az account clear
+sudo az config set core.enable_broker_on_windows=false
+sudo az login
 sudo az account set --subscription "$AZURE_SUBSCRIPTION_ID"
 
 # Get AKS credentials

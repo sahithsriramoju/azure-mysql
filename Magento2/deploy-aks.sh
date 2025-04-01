@@ -116,7 +116,8 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Install kubectl
 echo "Installing kubectl..."
-sudo az aks install-cli
+#sudo az aks install-cli
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
 # Install Helm
 echo "Installing Helm..."

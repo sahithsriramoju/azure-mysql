@@ -129,13 +129,12 @@ sudo apt-get install helm
 
 # Login to Azure using Service Principal
 echo "Logging into Azure..."
+sudo az account clear
+sudo az config set core.enable_broker_on_windows=false
 sudo az login --service-principal --username "$SERVICE_PRINCIPAL_APP_ID" --password "$SERVICE_PRINCIPAL_PASSWORD" --tenant "$TENANT_ID"
 
 # Set the Azure subscription
 echo "Setting the Azure subscription..."
-sudo az account clear
-sudo az config set core.enable_broker_on_windows=false
-sudo az login
 sudo az account set --subscription "$AZURE_SUBSCRIPTION_ID"
 
 # Get AKS credentials

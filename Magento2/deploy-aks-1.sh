@@ -186,13 +186,13 @@ sudo helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
   --set controller.nodeSelector."kubernetes\.io/os"=linux \
   --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
   --set controller.service.externalTrafficPolicy=Local
-sudo kubectl get services
+sudo kubectl get services --namespace $aks_namespace
 
 # Get the external IP of the Ingress Controller
 echo "Getting external IP of the Ingress Controller..."
 external_ip_service_name="ingress-nginx-controller"
 external_ip_address=$(waitAndGetExternalIpForService $external_ip_service_name $aks_namespace)
-sudo kubectl describe service $external_ip_service_name
+sudo kubectl describe service $external_ip_service_name --namespace $aks_namespace
 echo "External IP Address: $external_ip_address"
 
 # Applying the input configmap according to Infra deployment

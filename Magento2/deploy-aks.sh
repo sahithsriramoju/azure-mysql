@@ -117,7 +117,11 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 # Install kubectl
 echo "Installing kubectl..."
 #sudo az aks install-cli
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+sudo kubectl cluster-info
+sudo kubectl version
 
 # Install Helm
 echo "Installing Helm..."
